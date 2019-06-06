@@ -121,7 +121,7 @@ set(BOX2D_Rope_HDRS
 set(BOX2D_General_HDRS
 	Box2D.h
 )
-include_directories( ../ )
+
 
 if(BOX2D_BUILD_SHARED)
 	add_library(Box2D_shared SHARED
@@ -146,6 +146,7 @@ if(BOX2D_BUILD_SHARED)
 		CLEAN_DIRECT_OUTPUT 1
 		VERSION ${BOX2D_VERSION}
 	)
+	target_include_directories( Box2D_shared PUBLIC $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}>/../ )
 endif()
 
 if(BOX2D_BUILD_STATIC)
@@ -170,6 +171,7 @@ if(BOX2D_BUILD_STATIC)
 		CLEAN_DIRECT_OUTPUT 1
 		VERSION ${BOX2D_VERSION}
 	)
+	target_include_directories( Box2D PUBLIC $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}>/../ )
 endif()
 
 # These are used to create visual studio folders.
